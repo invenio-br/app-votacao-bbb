@@ -1,0 +1,16 @@
+<div id="poll-container">
+  <% if @poll.opened? %>
+    <h1 class="text-4xl font-bold mb-10">
+      Paredão das Linguagens: Vote para eliminar. <%= @poll_options.pluck(:name).to_sentence last_word_connector: ' ou ' %>?
+    </h1>
+
+    <div class="flex flex-col gap-4">
+      <% @poll_options.each do |option| %>
+        <%= button_to vote_path, method: :create, class: 'flex-grow flex items-center border border-gray-600 p-4 text-left', form_class: 'flex w-100', params: { poll_option_id: option.id } do %>
+          <h2 class="text-2xl font-bold text-slate-800 flex-grow"><%= option.name %></h2>
+          <%= image_tag option.photo, class: 'h-16 w-16 object-contain', alt: '' %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

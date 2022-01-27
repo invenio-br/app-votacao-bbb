@@ -1,0 +1,18 @@
+<%= turbo_stream.replace 'poll-container' do %>
+  <div id="poll-container">
+    <div class="flex items-center p-4 mb-8">
+      <div class="flex-grow">
+        <p class="font-semibold text-slate-700">
+          Você votou em
+        </p>
+        <p class="text-2xl font-bold">
+          <%= @poll_option.name %>
+        </p>
+      </div>
+
+      <%= image_tag @poll_option.photo, class: 'h-16 w-16 object-contain', alt: '' %>
+    </div>
+
+    <%= link_to 'Votar Novamente', root_path, class: 'block text-center p-4 text-white bg-violet-800 hover:bg-violet-900'%>
+  </div>
+<% end %>
